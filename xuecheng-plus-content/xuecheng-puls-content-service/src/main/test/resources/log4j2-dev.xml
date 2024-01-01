@@ -6,12 +6,12 @@
     </properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout charset="UTF-8" pattern="${PATTERN}"/>
+            <PatternLayout pattern="${PATTERN}"/>
         </Console>
 
         <RollingFile name="ErrorAppender" fileName="${logdir}/error.log"
             filePattern="${logdir}/$${date:yyyy-MM-dd}/error.%d{yyyy-MM-dd-HH}.log" append="true">
-            <PatternLayout charset="UTF-8" pattern="${PATTERN}"/>
+            <PatternLayout pattern="${PATTERN}"/>
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />
@@ -20,7 +20,7 @@
 
         <RollingFile name="DebugAppender" fileName="${logdir}/info.log"
             filePattern="${logdir}/$${date:yyyy-MM-dd}/info.%d{yyyy-MM-dd-HH}.log" append="true">
-            <PatternLayout charset="UTF-8" pattern="${PATTERN}"/>
+            <PatternLayout pattern="${PATTERN}"/>
             <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />
@@ -35,12 +35,12 @@
     </Appenders>
     
     <Loggers>
-         <!--过滤掉spring和mybatis的一些无用的debug信息 -->
+         <!--过滤掉spring和mybatis的一些无用的debug信息-->
         <logger name="org.springframework" level="INFO">
         </logger>
         <logger name="org.mybatis" level="INFO">
         </logger>
-        <logger name="cn.itcast.wanxinp2p.consumer.mapper" level="INFO">
+        <logger name="cn.itcast.wanxinp2p.consumer.mapper" level="DEBUG">
         </logger>
 
         <logger name="springfox" level="INFO">

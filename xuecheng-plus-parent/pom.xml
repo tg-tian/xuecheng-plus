@@ -21,10 +21,10 @@
         <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
         <org.projectlombok.version>1.18.30</org.projectlombok.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <fastjson.version>1.2.83</fastjson.version>
+        <fastjson2.version>2.0.44</fastjson2.version>
         <druid-spring-boot-starter.version>1.2.8</druid-spring-boot-starter.version>
         <mysql-connector-java.version>8.0.30</mysql-connector-java.version>
-        <mybatis-plus-boot-starter.version>3.4.1</mybatis-plus-boot-starter.version>
+        <mybatis-plus-boot-starter.version>3.5.5</mybatis-plus-boot-starter.version>
         <commons-lang.version>2.6</commons-lang.version>
         <minio.version>8.4.3</minio.version>
         <xxl-job-core.version>2.3.1</xxl-job-core.version>
@@ -91,11 +91,13 @@
                 <scope>provided</scope>
             </dependency>
             <!--  fastjson ，json解析工具  -->
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <version>${fastjson2.version}</version>
             </dependency>
+
             <!--  druid 连接池管理  -->
             <dependency>
                 <groupId>com.alibaba</groupId>

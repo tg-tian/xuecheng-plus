@@ -9,7 +9,7 @@ public class QueryCourseParamsDto {
 
     private String auditStatus;
 
-    private String couserName;
+    private String courseName;
 
     private String publishStatus;
 
