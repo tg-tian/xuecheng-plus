@@ -12,9 +12,15 @@ public class XueChengPlusException extends RuntimeException{
         this.errMessage = message;
     }
 
-    public  static void cast(CommonError error){
+    public static void cast(CommonError error){
 
         throw new XueChengPlusException(error.getErrMessage());
+
+    }
+
+    public static void cast(String error){
+
+        throw new XueChengPlusException(error);
 
     }
 

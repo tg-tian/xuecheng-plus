@@ -211,6 +211,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
+                    <parameters>true</parameters>
                     <!-- 指定项目源码jdk的版本 -->
                     <source>17</source>
                     <!-- 指定项目编译后的jdk的版本 -->

@@ -1,5 +1,6 @@
 package com.tg.content.model.dto;
 
+import com.tg.base.exception.ValidationGroups;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.validation.constraints.NotEmpty;
@@ -18,7 +19,8 @@ import lombok.Data;
 @ApiModel(value="AddCourseDto", description="新增课程基本信息")
 public class AddCourseDto {
 
- @NotEmpty(message = "课程名称不能为空")
+ @NotEmpty(message = "新增课程名称不能为空" , groups = ValidationGroups.Insert.class)
+ @NotEmpty(message = "修改课程名称不能为空" , groups = ValidationGroups.Update.class)
  @ApiModelProperty(value = "课程名称", required = true)
  private String name;
 

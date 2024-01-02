@@ -6,6 +6,7 @@ import com.tg.base.model.PageParams;
 import com.tg.base.model.PageResult;
 import com.tg.content.model.dto.AddCourseDto;
 import com.tg.content.model.dto.CourseBaseInfoDto;
+import com.tg.content.model.dto.EditCourseDto;
 import com.tg.content.model.dto.QueryCourseParamsDto;
 import com.tg.content.model.po.CourseBase;
 import org.apache.commons.lang.StringUtils;
@@ -19,5 +20,9 @@ public interface CourseBaseInfoService {
    CourseBaseInfoDto createCourseBase(Long companyId , AddCourseDto addCourseDto);
 
 
+   public CourseBaseInfoDto getCourseBaseInfo(Long courseId);
+
+   @Transactional
+   public CourseBaseInfoDto updateCourseBase(Long companyId, EditCourseDto dto);
 
 }
