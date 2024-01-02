@@ -25,4 +25,6 @@ public interface CourseBaseInfoService {
    @Transactional
    public CourseBaseInfoDto updateCourseBase(Long companyId, EditCourseDto dto);
 
+   @Transactional
+    void deleteCourseBase(Long id);
 }

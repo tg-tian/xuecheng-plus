@@ -89,7 +89,7 @@
                  left outer join teachplan_media m1
                                  on two.id = m1.teachplan_id
         where one.parentid = 0
-        order by one.id, two.id;
+        order by one.orderby, two.orderby;
     </select>
 
 </mapper>

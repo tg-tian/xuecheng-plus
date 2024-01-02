@@ -32,4 +32,24 @@ public class TeachplanController {
 
     }
 
+    @Operation(summary = "删除课程计划")
+    @DeleteMapping("/teachplan/{id}")
+    public void deleteTeachplan( @PathVariable Long id){
+
+        teachplanService.deleteTeachplan(id);
+
+    }
+
+    @Operation(summary = "向上移动课程计划")
+    @PostMapping("/teachplan/moveup/{id}")
+    public void moveupTeachplan( @PathVariable Long id){
+
+        teachplanService.moveup(id);
+    }
+
+    @Operation(summary = "向下移动课程计划")
+    @PostMapping("/teachplan/movedown/{id}")
+    public void movedownTeachplan( @PathVariable Long id){
+        teachplanService.movedown(id);
+    }
 }

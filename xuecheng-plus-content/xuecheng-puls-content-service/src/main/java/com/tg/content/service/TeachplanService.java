@@ -10,5 +10,12 @@ public interface TeachplanService {
     List<TeachplanDto> findTeachplanTree(long courseId);
 
     @Transactional
-    public void saveTeachplan(SaveTeachplanDto teachplanDto);
+    void saveTeachplan(SaveTeachplanDto teachplanDto);
+
+    @Transactional
+    void deleteTeachplan(Long id);
+
+    void moveup(Long id);
+
+    void movedown(Long id);
 }

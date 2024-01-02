@@ -5,16 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.tg.base.exception.XueChengPlusException;
 import com.tg.base.model.PageParams;
 import com.tg.base.model.PageResult;
-import com.tg.content.mapper.CourseBaseMapper;
-import com.tg.content.mapper.CourseCategoryMapper;
-import com.tg.content.mapper.CourseMarketMapper;
+import com.tg.content.mapper.*;
 import com.tg.content.model.dto.AddCourseDto;
 import com.tg.content.model.dto.CourseBaseInfoDto;
 import com.tg.content.model.dto.EditCourseDto;
 import com.tg.content.model.dto.QueryCourseParamsDto;
-import com.tg.content.model.po.CourseBase;
-import com.tg.content.model.po.CourseCategory;
-import com.tg.content.model.po.CourseMarket;
+import com.tg.content.model.po.*;
 import com.tg.content.service.CourseBaseInfoService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -34,6 +30,16 @@ public class CourseBaseServiceImpl implements CourseBaseInfoService {
 
     @Autowired
     CourseCategoryMapper courseCategoryMapper;
+
+    @Autowired
+    CourseTeacherMapper courseTeacherMapper;
+
+    @Autowired
+    TeachplanMapper teachplanMapper;
+
+    @Autowired
+    TeachplanMediaMapper teachplanMediaMapper;
+
     @Override
     public PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto) {
 
@@ -120,6 +126,21 @@ public class CourseBaseServiceImpl implements CourseBaseInfoService {
 
         return getCourseBaseInfo(id);
 
+    }
+
+    @Override
+    public void deleteCourseBase(Long id) {
+        courseBaseMapper.deleteById(id);
+        courseMarketMapper.deleteById(id);
+        LambdaQueryWrapper<CourseTeacher> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(CourseTeacher::getCourseId,id);
+        courseTeacherMapper.delete(queryWrapper);
+        LambdaQueryWrapper<Teachplan> queryWrapper1 = new LambdaQueryWrapper<>();
+        queryWrapper1.eq(Teachplan::getCourseId,id);
+        teachplanMapper.delete(queryWrapper1);
+        LambdaQueryWrapper<TeachplanMedia> queryWrapper2 = new LambdaQueryWrapper<>();
+        queryWrapper2.eq(TeachplanMedia::getCourseId,id);
+        teachplanMediaMapper.delete(queryWrapper2);
     }
 
     private int saveCourseMarket(CourseMarket courseMarket){

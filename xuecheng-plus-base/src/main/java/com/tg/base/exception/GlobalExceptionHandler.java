@@ -22,6 +22,9 @@ public class GlobalExceptionHandler {
 
         log.error("系统异常{}",e.getMessage(),e);
 
+        if (e.getMessage().equals("课程计划信息还有子级信息，无法操作")) {
+            return new RestErrorResponse(e.getMessage(),"120409");
+        }
         return new RestErrorResponse(e.getMessage());
     }
 
