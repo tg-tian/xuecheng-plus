@@ -3,18 +3,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>xuecheng-plus-system</artifactId>
+        <artifactId>xuecheng-plus-media</artifactId>
         <groupId>com.tg</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>xuecheng-plus-system-service</artifactId>
-    <name>xuecheng-plus-system-service</name>
-    <description>xuecheng-plus-system-service</description>
+    <artifactId>xuecheng-plus-media-service</artifactId>
+
 
     <dependencies>
         <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.tg</groupId>
-            <artifactId>xuecheng-plus-system-model</artifactId>
+            <artifactId>xuecheng-plus-media-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
@@ -61,15 +64,29 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>8.4.3</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.8.1</version>
+        </dependency>
     </dependencies>
 
 </project>

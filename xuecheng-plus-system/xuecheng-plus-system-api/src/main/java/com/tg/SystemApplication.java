@@ -1,4 +1,4 @@
-package com.tg.system;
+package com.tg;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -44,8 +44,7 @@ public class CourseBaseServiceImpl implements CourseBaseInfoService {
     public PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto) {
 
         LambdaQueryWrapper<CourseBase> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.like(StringUtils.isNotEmpty(queryCourseParamsDto.getCourseName()),CourseBase::getName,queryCourseParamsDto.getCourseName());
-        queryWrapper.eq(StringUtils.isNotEmpty(queryCourseParamsDto.getAuditStatus()),CourseBase::getAuditStatus,queryCourseParamsDto.getAuditStatus());
+
         Page<CourseBase> page = new Page<>(pageParams.getPageNo(), pageParams.getPageSize());
 
         Page<CourseBase> pageResult = courseBaseMapper.selectPage(page, queryWrapper);

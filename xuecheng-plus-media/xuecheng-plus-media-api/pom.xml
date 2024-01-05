@@ -3,19 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>xuecheng-plus-system</artifactId>
+        <artifactId>xuecheng-plus-media</artifactId>
         <groupId>com.tg</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>xuecheng-plus-system-api</artifactId>
-    <name>xuecheng-plus-system-api</name>
-    <description>xuecheng-plus-system-api</description>
+    <artifactId>xuecheng-plus-media-api</artifactId>
+
 
     <dependencies>
 
+
         <dependency>
             <groupId>com.tg</groupId>
-            <artifactId>xuecheng-plus-system-service</artifactId>
+            <artifactId>xuecheng-plus-media-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
@@ -25,12 +25,12 @@
             <artifactId>spring-cloud-context</artifactId>
         </dependency>
 
-
         <!-- Spring Boot 的 Spring Web MVC 集成 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
@@ -76,12 +76,6 @@
         <!-- Spring Boot 集成 swagger -->
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <!-- 官方建议是springdoc替代springfox-->
-        <dependency>
-            <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
             <version>2.0.2</version>
         </dependency>
@@ -93,13 +87,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>
