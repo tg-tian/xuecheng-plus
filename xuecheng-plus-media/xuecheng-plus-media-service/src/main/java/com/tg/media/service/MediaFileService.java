@@ -2,6 +2,7 @@ package com.tg.media.service;
 
 import com.tg.base.model.PageParams;
 import com.tg.base.model.PageResult;
+import com.tg.base.model.RestResponse;
 import com.tg.media.model.dto.QueryMediaParamsDto;
 import com.tg.media.model.dto.UploadFileParamsDto;
 import com.tg.media.model.dto.UploadFileResultDto;
@@ -32,6 +33,14 @@ public interface MediaFileService {
 
  @Transactional
  MediaFiles addMediaFilesToDb(Long companyId, String fileMd5, UploadFileParamsDto uploadFileParamsDto, String bucket, String objectName);
+
+ RestResponse<Boolean> checkFile(String fileMd5);
+
+ RestResponse<Boolean> checkChunk(String fileMd5, int chunkIndex);
+
+ RestResponse uploadChunk(String fileMd5, int chunk, String localChunkFilePath);
+
+ RestResponse mergechunks(Long companyId,String fileMd5,int chunkTotal,UploadFileParamsDto uploadFileParamsDto);
 
 
 }
