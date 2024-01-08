@@ -9,6 +9,8 @@ import com.tg.media.model.dto.UploadFileResultDto;
 import com.tg.media.model.po.MediaFiles;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+
 /**
  * @description 媒资文件管理业务类
  * @author Mr.M
@@ -41,6 +43,10 @@ public interface MediaFileService {
  RestResponse uploadChunk(String fileMd5, int chunk, String localChunkFilePath);
 
  RestResponse mergechunks(Long companyId,String fileMd5,int chunkTotal,UploadFileParamsDto uploadFileParamsDto);
+
+ boolean addMediaFilesToMinIO(String localFilePath, String mimeType, String bucketFiles, String objectName);
+
+ File downloadFileFromMinIO(String bucket, String objectName);
 
 
 }

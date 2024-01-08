@@ -23,6 +23,7 @@ import io.minio.messages.DeleteError;
 import io.minio.messages.DeleteObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,10 +32,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -360,7 +358,7 @@ public class MediaFileServiceImpl implements MediaFileService {
     }
 
 
-    private boolean addMediaFilesToMinIO(String localFilePath, String mimeType, String bucketFiles, String objectName) {
+    public boolean addMediaFilesToMinIO(String localFilePath, String mimeType, String bucketFiles, String objectName) {
         try {
             UploadObjectArgs testbucket = UploadObjectArgs.builder()
                     .bucket(bucketFiles)
@@ -378,5 +376,33 @@ public class MediaFileServiceImpl implements MediaFileService {
             XueChengPlusException.cast("上传文件到文件系统失败");
         }
         return false;
+    }
+
+    public File downloadFileFromMinIO(String bucket,String objectName){
+        //临时文件
+        File minioFile = null;
+        FileOutputStream outputStream = null;
+        try{
+            InputStream stream = minioClient.getObject(GetObjectArgs.builder()
+                    .bucket(bucket)
+                    .object(objectName)
+                    .build());
+            //创建临时文件
+            minioFile=File.createTempFile("minio", ".merge");
+            outputStream = new FileOutputStream(minioFile);
+            IOUtils.copy(stream,outputStream);
+            return minioFile;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if(outputStream!=null){
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 }

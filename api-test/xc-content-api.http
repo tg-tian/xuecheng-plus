@@ -44,3 +44,13 @@ Content-Disposition: form-data; name="filedata"; filename="1.jpg"
 Content-Type: application/octet-stream
 
 < e:/1.jpg
+
+###
+POST {{content_host}}/content/teachplan/association/media
+Content-Type: application/json
+
+{
+  "mediaId": "",
+  "fileName": "",
+  "teachplanId": 0
+}

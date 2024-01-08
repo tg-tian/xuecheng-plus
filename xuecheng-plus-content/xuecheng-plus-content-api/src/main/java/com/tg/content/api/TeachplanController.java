@@ -1,5 +1,6 @@
 package com.tg.content.api;
 
+import com.tg.content.model.dto.BindTeachplanMediaDto;
 import com.tg.content.model.dto.SaveTeachplanDto;
 import com.tg.content.model.dto.TeachplanDto;
 import com.tg.content.service.TeachplanService;
@@ -15,6 +16,9 @@ import java.util.List;
 public class TeachplanController {
     @Autowired
     TeachplanService teachplanService;
+
+
+
 
     @Operation(summary = "查询课程计划树形结构")
     @GetMapping("/teachplan/{courseId}/tree-nodes")
@@ -52,4 +56,17 @@ public class TeachplanController {
     public void movedownTeachplan( @PathVariable Long id){
         teachplanService.movedown(id);
     }
+
+    @Operation(summary = "课程计划和媒资信息绑定")
+    @PostMapping("/teachplan/association/media")
+    public void associationMedia(@RequestBody BindTeachplanMediaDto bindTeachplanMediaDto){
+        teachplanService.associationMedia(bindTeachplanMediaDto);
+    }
+
+    @Operation(summary = "课程计划和媒资信息删除")
+    @DeleteMapping("/teachplan/association/media/{teachPlanId}/{mediaId}")
+    public void deleteAssociationMedia(@PathVariable("teachPlanId") Long teachPlanId , @PathVariable("mediaId") String mediaId){
+        teachplanService.deleteTeachplanMedia(teachPlanId,mediaId);
+    }
+
 }
