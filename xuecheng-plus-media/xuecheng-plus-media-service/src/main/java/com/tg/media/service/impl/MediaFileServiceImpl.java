@@ -405,4 +405,9 @@ public class MediaFileServiceImpl implements MediaFileService {
         }
         return null;
     }
+
+    @Override
+    public MediaFiles getFileById(String mediaId) {
+        return mediaFilesMapper.selectById(mediaId);
+    }
 }
